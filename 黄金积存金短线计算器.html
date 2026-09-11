@@ -9,806 +9,589 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{font-size:16px}
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  background:#fff;color:#1a1a1a;line-height:1.6;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+  background:#f2f2f7;color:#1c1c1e;line-height:1.5;
   padding:16px;max-width:640px;margin:0 auto;
   -webkit-font-smoothing:antialiased;
 }
 
 /* ========== 标题区 ========== */
-.header{text-align:center;padding:20px 0 16px;border-bottom:1px solid #eee;margin-bottom:20px}
-.header h1{font-size:1.35rem;font-weight:700;letter-spacing:1px;color:#1a1a1a}
-.header .subtitle{font-size:0.82rem;color:#888;margin-top:6px;letter-spacing:0.5px}
+.page-header{
+  padding:8px 4px 20px;
+}
+.page-header h1{
+  font-size:1.6rem;font-weight:700;color:#1c1c1e;letter-spacing:0.5px;
+}
+.page-header .sub{
+  font-size:0.85rem;color:#8e8e93;margin-top:6px;
+}
 
 /* ========== 卡片通用 ========== */
 .card{
-  background:#fff;border:1px solid #e8e8e8;border-radius:10px;
-  padding:16px;margin-bottom:16px;
+  background:#fff;border-radius:20px;
+  padding:20px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
 }
 .card-title{
-  font-size:0.95rem;font-weight:700;color:#1a1a1a;
-  margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #f0f0f0;
-  display:flex;align-items:center;gap:6px;
+  font-size:1.35rem;font-weight:700;color:#1c1c1e;
+  margin-bottom:18px;
 }
-.card-title .dot{width:4px;height:14px;background:#1a1a1a;border-radius:2px;display:inline-block}
 
-/* ========== 表单 ========== */
-.form-row{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:8px 0;border-bottom:1px solid #f5f5f5;
+/* ========== 两列输入布局 ========== */
+.input-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
 }
-.form-row:last-child{border-bottom:none}
-.form-row label{font-size:0.85rem;color:#555;flex:1}
-.form-row .value-group{display:flex;align-items:center;gap:4px;flex:0 0 auto}
-.form-row input[type="number"]{
-  width:100px;text-align:right;border:1px solid #ddd;border-radius:6px;
-  padding:6px 8px;font-size:0.85rem;color:#1a1a1a;background:#fafafa;
+.input-group{
+  display:flex;flex-direction:column;gap:6px;
+}
+.input-group.full{
+  grid-column:1/-1;
+}
+.input-group label{
+  font-size:0.9rem;color:#8e8e93;font-weight:500;
+}
+.input-group input{
+  width:100%;border:1px solid #d1d1d6;border-radius:12px;
+  padding:14px 16px;font-size:1.15rem;color:#1c1c1e;
+  background:#fff;font-weight:500;
   -moz-appearance:textfield;
+  transition:border-color 0.2s;
 }
-.form-row input[type="number"]:focus{outline:none;border-color:#999;background:#fff}
-.form-row input[type="number"]::-webkit-outer-spin-button,
-.form-row input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.form-row .unit{font-size:0.78rem;color:#999;width:32px;text-align:left}
-
-/* ========== 操作建议 ========== */
-.suggestion-box{
-  border-radius:10px;padding:16px;text-align:center;margin-bottom:16px;
-  border:1px solid #e8e8e8;
+.input-group input:focus{
+  outline:none;border-color:#1c1c1e;
 }
-.suggestion-box .status-icon{font-size:1.6rem;margin-bottom:6px}
-.suggestion-box .status-text{font-size:1.05rem;font-weight:700;margin-bottom:6px}
-.suggestion-box .status-desc{font-size:0.82rem;color:#666;line-height:1.7}
-.suggestion-buy{background:#f0faf3;border-color:#c8e6d0}
-.suggestion-hold{background:#fdfbf3;border-color:#f0e6c0}
-.suggestion-sell{background:#fdf0f0;border-color:#f0c8c8}
-
-/* ========== 表格 ========== */
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table{width:100%;border-collapse:collapse;font-size:0.8rem}
-th,td{padding:8px 6px;text-align:center;border-bottom:1px solid #f0f0f0;white-space:nowrap}
-th{background:#f8f8f8;font-weight:600;color:#555;font-size:0.75rem}
-td{color:#333}
-.tag-buy{color:#2e9e5b;font-weight:600}
-.tag-sell{color:#d94040;font-weight:600}
-.tag-hold{color:#b8860b;font-weight:600}
-.row-highlight{background:#f8fdf9}
-
-/* ========== 利润试算 ========== */
-.calc-result{
-  background:#f8f8f8;border-radius:8px;padding:12px;margin-top:12px;
+.input-group input::-webkit-outer-spin-button,
+.input-group input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.input-group input[readonly]{
+  background:#f9f9fb;color:#8e8e93;
 }
-.calc-result .result-row{
-  display:flex;justify-content:space-between;padding:5px 0;
-  font-size:0.82rem;border-bottom:1px dashed #eee;
-}
-.calc-result .result-row:last-child{border-bottom:none}
-.calc-result .result-label{color:#666}
-.calc-result .result-value{color:#1a1a1a;font-weight:600;font-variant-numeric:tabular-nums}
-.calc-result .result-value.profit{color:#2e9e5b}
-.calc-result .result-value.loss{color:#d94040}
-.calc-verdict{
-  margin-top:10px;padding:10px;border-radius:6px;font-size:0.82rem;text-align:center;font-weight:600;
-}
-.verdict-positive{background:#e8f5ec;color:#2e9e5b}
-.verdict-negative{background:#fde8e8;color:#d94040}
 
 /* ========== 按钮 ========== */
 .btn{
-  display:inline-block;width:100%;padding:11px;border:none;border-radius:8px;
-  font-size:0.88rem;font-weight:600;cursor:pointer;transition:opacity 0.15s;
-  text-align:center;
+  display:block;width:100%;padding:16px;border:none;border-radius:14px;
+  font-size:1.1rem;font-weight:600;cursor:pointer;
+  text-align:center;transition:opacity 0.15s;
+  margin-top:16px;
 }
-.btn:active{opacity:0.75}
-.btn-primary{background:#1a1a1a;color:#fff}
-.btn-green{background:#2e9e5b;color:#fff}
-.btn-red{background:#d94040;color:#fff}
-.btn-gray{background:#f0f0f0;color:#555}
-.btn-sm{padding:7px 12px;font-size:0.78rem;width:auto}
-.btn-row{display:flex;gap:8px;margin-top:10px}
-.btn-row .btn{flex:1}
+.btn:active{opacity:0.8}
+.btn-black{background:#1c1c1e;color:#fff}
+.btn-light{background:#f2f2f7;color:#1c1c1e}
+.btn-sm{padding:10px 16px;font-size:0.85rem;width:auto;border-radius:10px;margin-top:0}
 
-/* ========== 交易记录 ========== */
-.trade-summary{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;
+/* ========== 操作建议区 ========== */
+.suggestion{
+  font-size:1.35rem;font-weight:700;color:#1c1c1e;
+  margin-bottom:18px;
 }
-.trade-summary .stat{
-  background:#f8f8f8;border-radius:8px;padding:10px;text-align:center;
+.suggestion .status{
+  font-size:1rem;font-weight:500;color:#8e8e93;margin-top:8px;line-height:1.6;
 }
-.trade-summary .stat-label{font-size:0.72rem;color:#888;margin-bottom:3px}
-.trade-summary .stat-value{font-size:0.92rem;font-weight:700;color:#1a1a1a;font-variant-numeric:tabular-nums}
-.trade-summary .stat-value.positive{color:#2e9e5b}
-.trade-summary .stat-value.negative{color:#d94040}
+.suggestion.buy .status{color:#34c759}
+.suggestion.sell .status{color:#ff3b30}
+.suggestion.hold .status{color:#ff9500}
 
-.trade-list{max-height:280px;overflow-y:auto;border:1px solid #f0f0f0;border-radius:8px}
-.trade-item{
-  padding:10px 12px;border-bottom:1px solid #f5f5f5;font-size:0.78rem;
-}
-.trade-item:last-child{border-bottom:none}
-.trade-item .trade-head{display:flex;justify-content:space-between;margin-bottom:4px}
-.trade-item .trade-time{color:#999;font-size:0.7rem}
-.trade-item .trade-profit{font-weight:700;font-variant-numeric:tabular-nums}
-.trade-item .trade-detail{color:#666;font-size:0.75rem;line-height:1.6}
-.empty-tip{text-align:center;padding:24px;color:#bbb;font-size:0.8rem}
+/* ========== 表格 ========== */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:0.95rem}
+th,td{padding:12px 8px;text-align:center;border-bottom:1px solid #f2f2f7}
+th{background:#f9f9fb;font-weight:600;color:#8e8e93;font-size:0.85rem}
+td{color:#1c1c1e;font-weight:500}
+tr:last-child td{border-bottom:none}
+.tag-buy{color:#34c759;font-weight:600}
+.note{color:#8e8e93;font-size:0.8rem}
 
-/* ========== 纪律提示 ========== */
-.discipline-list{list-style:none;padding:0}
-.discipline-list li{
-  padding:7px 0;font-size:0.8rem;color:#555;border-bottom:1px solid #f5f5f5;
-  padding-left:18px;position:relative;line-height:1.6;
-}
-.discipline-list li::before{content:"•";position:absolute;left:4px;color:#bbb;font-weight:700}
-.discipline-list li:last-child{border-bottom:none}
-
-.warn-box{
-  background:#fff8e6;border:1px solid #f5d76e;border-radius:8px;
-  padding:12px;margin-top:12px;font-size:0.8rem;color:#8a6d00;line-height:1.7;
+/* ========== 利润计算结果 ========== */
+.result-box{
+  background:#f9f9fb;border-radius:14px;padding:16px;margin-top:16px;
   display:none;
 }
-.warn-box.show{display:block}
+.result-box.show{display:block}
+.result-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 0;border-bottom:1px solid #ececf0;
+  font-size:0.92rem;
+}
+.result-row:last-child{border-bottom:none}
+.result-row .label{color:#8e8e93}
+.result-row .value{color:#1c1c1e;font-weight:600;font-variant-numeric:tabular-nums}
+.result-row .value.profit{color:#34c759}
+.result-row .value.loss{color:#ff3b30}
+.verdict{
+  margin-top:12px;padding:12px;border-radius:10px;
+  font-size:0.9rem;text-align:center;font-weight:600;
+}
+.verdict.ok{background:#e8f8ed;color:#34c759}
+.verdict.no{background:#fff0f0;color:#ff3b30}
+.warn-tip{
+  background:#fff8e6;color:#d4a017;padding:12px;border-radius:10px;
+  font-size:0.85rem;margin-top:12px;display:none;line-height:1.5;
+}
+.warn-tip.show{display:block}
+
+/* ========== 交易记录 ========== */
+.trade-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;
+}
+.trade-stats .stat{
+  background:#f9f9fb;border-radius:12px;padding:12px;text-align:center;
+}
+.trade-stats .stat-label{font-size:0.75rem;color:#8e8e93;margin-bottom:4px}
+.trade-stats .stat-value{font-size:1rem;font-weight:700;color:#1c1c1e;font-variant-numeric:tabular-nums}
+.trade-stats .stat-value.pos{color:#34c759}
+.trade-stats .stat-value.neg{color:#ff3b30}
+.trade-list{
+  max-height:240px;overflow-y:auto;border-radius:12px;
+  background:#f9f9fb;
+}
+.trade-item{
+  padding:12px 14px;border-bottom:1px solid #ececf0;
+}
+.trade-item:last-child{border-bottom:none}
+.trade-item .ti-head{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;
+}
+.trade-item .ti-time{font-size:0.72rem;color:#8e8e93}
+.trade-item .ti-profit{font-weight:700;font-size:0.9rem;font-variant-numeric:tabular-nums}
+.trade-item .ti-detail{font-size:0.78rem;color:#636366;line-height:1.5}
+.empty{text-align:center;padding:24px;color:#c7c7cc;font-size:0.85rem}
+
+/* ========== 使用规则 ========== */
+.rules{
+  color:#8e8e93;font-size:0.88rem;line-height:1.8;
+}
+.rules .rules-title{font-weight:600;margin-bottom:6px;color:#8e8e93}
+.rules ol{padding-left:20px}
+.rules li{margin-bottom:2px}
 
 /* ========== 底部 ========== */
-.footer{text-align:center;padding:20px 0 10px;font-size:0.7rem;color:#bbb;line-height:1.8}
+.footer{
+  text-align:center;padding:16px 0 8px;font-size:0.72rem;color:#c7c7cc;line-height:1.6;
+}
 
 /* ========== 响应式 ========== */
 @media(max-width:380px){
   body{padding:12px}
-  .form-row input[type="number"]{width:85px;font-size:0.8rem}
-  .form-row .unit{width:26px;font-size:0.72rem}
-  th,td{padding:6px 4px;font-size:0.72rem}
+  .card{padding:16px;border-radius:16px}
+  .input-group input{padding:12px 14px;font-size:1.05rem}
+  .card-title{font-size:1.2rem}
+  .page-header h1{font-size:1.4rem}
 }
 </style>
 </head>
 <body>
 
 <!-- ==================== 标题 ==================== -->
-<div class="header">
+<div class="page-header">
   <h1>黄金积存金 · 短线计算器</h1>
-  <div class="subtitle">核心底仓 + 分批网格 + 短线止盈</div>
+  <div class="sub" id="headerSub">核心底仓 + 分批网格 + 短线止盈</div>
 </div>
 
-<!-- ==================== 当前账户 ==================== -->
+<!-- ==================== 账户参数 ==================== -->
 <div class="card">
-  <div class="card-title"><span class="dot"></span>当前账户</div>
-  <div class="form-row">
-    <label>当前金价</label>
-    <div class="value-group">
-      <input type="number" id="currentPrice" step="0.01" value="948.00">
-      <span class="unit">元/克</span>
+  <div class="input-grid">
+    <div class="input-group">
+      <label>当前金价（元/克）</label>
+      <input type="number" id="currentPrice" step="0.01" value="948.20">
     </div>
-  </div>
-  <div class="form-row">
-    <label>已持有克数</label>
-    <div class="value-group">
-      <input type="number" id="heldGrams" step="0.0001" value="20.4209">
-      <span class="unit">克</span>
-    </div>
-  </div>
-  <div class="form-row">
-    <label>目标总量</label>
-    <div class="value-group">
-      <input type="number" id="targetGrams" step="0.0001" value="30.0000">
-      <span class="unit">克</span>
-    </div>
-  </div>
-  <div class="form-row">
-    <label>剩余可买</label>
-    <div class="value-group">
-      <input type="number" id="remainingGrams" step="0.0001" value="9.5791" readonly style="background:#f0f0f0;color:#888">
-      <span class="unit">克</span>
-    </div>
-  </div>
-  <div class="form-row">
-    <label>持仓平均成本</label>
-    <div class="value-group">
-      <input type="number" id="costPrice" step="0.01" value="930.42">
-      <span class="unit">元/克</span>
-    </div>
-  </div>
-  <div class="form-row">
-    <label>卖出手续费</label>
-    <div class="value-group">
+    <div class="input-group">
+      <label>卖出手续费（%）</label>
       <input type="number" id="sellFeeRate" step="0.01" value="0.40">
-      <span class="unit">%</span>
+    </div>
+    <div class="input-group">
+      <label>已持有（克）</label>
+      <input type="number" id="heldGrams" step="0.0001" value="20.4209">
+    </div>
+    <div class="input-group">
+      <label>目标总量（克）</label>
+      <input type="number" id="targetGrams" step="0.0001" value="30">
+    </div>
+    <div class="input-group">
+      <label>持仓成本（元/克）</label>
+      <input type="number" id="costPrice" step="0.01" value="930.42">
+    </div>
+    <div class="input-group">
+      <label>每档买入（克）</label>
+      <input type="number" id="defaultTradeUnit" step="0.0001" value="2">
     </div>
   </div>
-  <div class="form-row">
-    <label>默认交易单位</label>
-    <div class="value-group">
-      <input type="number" id="defaultTradeUnit" step="0.0001" value="2.0000">
-      <span class="unit">克/次</span>
-    </div>
-  </div>
-  <div class="form-row">
-    <label>网格价差</label>
-    <div class="value-group">
-      <input type="number" id="gridStep" step="0.01" value="3.00">
-      <span class="unit">元/克</span>
-    </div>
-  </div>
-  <div class="form-row">
-    <label>网格起始价</label>
-    <div class="value-group">
-      <input type="number" id="gridStart" step="0.01" value="945.00">
-      <span class="unit">元/克</span>
-    </div>
-  </div>
-  <div class="btn-row">
-    <button class="btn btn-gray btn-sm" onclick="resetDefaults()">恢复默认参数</button>
-  </div>
+  <button class="btn btn-black" onclick="doCalculate()">立即计算</button>
 </div>
 
-<!-- ==================== 今日操作建议 ==================== -->
-<div class="suggestion-box" id="suggestionBox">
-  <div class="status-icon" id="statusIcon">🟡</div>
-  <div class="status-text" id="statusText">等待 / 持有</div>
-  <div class="status-desc" id="statusDesc">当前处于等待区，不建议追涨。</div>
-</div>
-
-<!-- ==================== 买入网格表 ==================== -->
+<!-- ==================== 操作建议 ==================== -->
 <div class="card">
-  <div class="card-title"><span class="dot"></span>分批买入网格</div>
+  <div class="suggestion hold" id="suggestionBox">
+    <div id="suggestionTitle">请输入当前价格</div>
+    <div class="status" id="suggestionDesc">点击"立即计算"获取操作建议</div>
+  </div>
+</div>
+
+<!-- ==================== 建议网格 ==================== -->
+<div class="card">
+  <div class="card-title">建议网格</div>
   <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th>价格(元/克)</th>
-          <th>操作</th>
-          <th>数量(克)</th>
-          <th>累计新增(克)</th>
-          <th>止盈价(元/克)</th>
+          <th>价格</th>
+          <th>动作</th>
+          <th>数量</th>
           <th>备注</th>
         </tr>
       </thead>
-      <tbody id="gridBody"></tbody>
+      <tbody id="gridBody">
+        <tr><td colspan="4" class="empty">点击"立即计算"生成网格</td></tr>
+      </tbody>
     </table>
   </div>
 </div>
 
 <!-- ==================== 短线利润试算 ==================== -->
 <div class="card">
-  <div class="card-title"><span class="dot"></span>短线利润试算</div>
-  <div class="form-row">
-    <label>买入价格</label>
-    <div class="value-group">
-      <input type="number" id="calcBuyPrice" step="0.01" value="945.00">
-      <span class="unit">元/克</span>
+  <div class="card-title">短线利润试算</div>
+  <div class="input-grid">
+    <div class="input-group">
+      <label>买入价</label>
+      <input type="number" id="calcBuyPrice" step="0.01" value="945">
+    </div>
+    <div class="input-group">
+      <label>卖出价</label>
+      <input type="number" id="calcSellPrice" step="0.01" value="953">
+    </div>
+    <div class="input-group">
+      <label>交易克数</label>
+      <input type="number" id="calcGrams" step="0.0001" value="2">
     </div>
   </div>
-  <div class="form-row">
-    <label>卖出价格</label>
-    <div class="value-group">
-      <input type="number" id="calcSellPrice" step="0.01" value="953.00">
-      <span class="unit">元/克</span>
-    </div>
+  <button class="btn btn-black" onclick="calcProfit()">计算净利润</button>
+
+  <div class="warn-tip" id="calcWarn">⚠️ 当前价差过小，扣除手续费后收益有限，不建议频繁交易。</div>
+
+  <div class="result-box" id="calcResult">
+    <div class="result-row"><span class="label">买入金额</span><span class="value" id="rBuyAmount">-</span></div>
+    <div class="result-row"><span class="label">卖出金额</span><span class="value" id="rSellAmount">-</span></div>
+    <div class="result-row"><span class="label">毛利润</span><span class="value" id="rGross">-</span></div>
+    <div class="result-row"><span class="label">手续费</span><span class="value" id="rFee">-</span></div>
+    <div class="result-row"><span class="label">实际净利润</span><span class="value" id="rNet">-</span></div>
+    <div class="result-row"><span class="label">净收益率</span><span class="value" id="rRate">-</span></div>
+    <div class="verdict" id="rVerdict"></div>
   </div>
-  <div class="form-row">
-    <label>交易克数</label>
-    <div class="value-group">
-      <input type="number" id="calcGrams" step="0.0001" value="2.0000">
-      <span class="unit">克</span>
-    </div>
-  </div>
-  <div class="form-row">
-    <label>卖出手续费</label>
-    <div class="value-group">
-      <input type="number" id="calcFeeRate" step="0.01" value="0.40">
-      <span class="unit">%</span>
-    </div>
-  </div>
-  <div class="btn-row">
-    <button class="btn btn-primary" onclick="calculateProfit()">计算净利润</button>
-  </div>
-  <div class="warn-box" id="calcWarnBox">
-    ⚠️ 当前价差过小，扣除手续费后收益有限，不建议频繁交易。
-  </div>
-  <div class="calc-result" id="calcResult" style="display:none">
-    <div class="result-row"><span class="result-label">买入金额</span><span class="result-value" id="rBuyAmount">-</span></div>
-    <div class="result-row"><span class="result-label">卖出金额</span><span class="result-value" id="rSellAmount">-</span></div>
-    <div class="result-row"><span class="result-label">毛利润</span><span class="result-value" id="rGrossProfit">-</span></div>
-    <div class="result-row"><span class="result-label">卖出手续费</span><span class="result-value" id="rFee">-</span></div>
-    <div class="result-row"><span class="result-label">实际净利润</span><span class="result-value" id="rNetProfit">-</span></div>
-    <div class="result-row"><span class="result-label">净收益率</span><span class="result-value" id="rReturnRate">-</span></div>
-    <div class="calc-verdict" id="rVerdict"></div>
-  </div>
-  <div class="btn-row">
-    <button class="btn btn-green" onclick="recordTrade()">记录本次交易</button>
-  </div>
+
+  <button class="btn btn-light" onclick="recordTrade()" style="margin-top:12px">记录本次交易</button>
 </div>
 
 <!-- ==================== 交易记录 ==================== -->
 <div class="card">
-  <div class="card-title"><span class="dot"></span>交易记录</div>
-  <div class="trade-summary">
+  <div class="card-title">交易记录</div>
+  <div class="trade-stats">
     <div class="stat">
-      <div class="stat-label">累计交易次数</div>
-      <div class="stat-value" id="sumCount">0</div>
+      <div class="stat-label">累计次数</div>
+      <div class="stat-value" id="sCount">0</div>
     </div>
     <div class="stat">
-      <div class="stat-label">累计交易克数</div>
-      <div class="stat-value" id="sumGrams">0.0000</div>
+      <div class="stat-label">累计克数</div>
+      <div class="stat-value" id="sGrams">0.0000</div>
     </div>
     <div class="stat">
       <div class="stat-label">累计手续费</div>
-      <div class="stat-value" id="sumFee">0.00</div>
+      <div class="stat-value" id="sFee">0.00</div>
     </div>
     <div class="stat">
       <div class="stat-label">累计净利润</div>
-      <div class="stat-value" id="sumNetProfit">0.00</div>
+      <div class="stat-value" id="sNet">0.00</div>
     </div>
   </div>
   <div class="trade-list" id="tradeList">
-    <div class="empty-tip">暂无交易记录</div>
+    <div class="empty">暂无交易记录</div>
   </div>
-  <div class="btn-row">
-    <button class="btn btn-red btn-sm" onclick="clearTrades()">清空交易记录</button>
-  </div>
+  <button class="btn btn-light btn-sm" onclick="clearTrades()" style="margin-top:12px">清空记录</button>
 </div>
 
-<!-- ==================== 交易纪律 ==================== -->
+<!-- ==================== 使用规则 ==================== -->
 <div class="card">
-  <div class="card-title"><span class="dot"></span>交易纪律与风险提示</div>
-  <div class="trade-summary">
-    <div class="stat">
-      <div class="stat-label">单次默认交易</div>
-      <div class="stat-value" id="discUnit">2.0000 克</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">核心底仓</div>
-      <div class="stat-value" id="discCore">20.4209 克</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">机动仓上限</div>
-      <div class="stat-value" id="discFlex">9.5791 克</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">建议最小价差</div>
-      <div class="stat-value" id="discMinSpread">6.00 元/克</div>
-    </div>
+  <div class="rules">
+    <div class="rules-title">使用规则：</div>
+    <ol>
+      <li>20.4209克作为核心底仓，原则上不因短线波动全部卖出。</li>
+      <li>剩余约9.5791克作为机动仓，默认每档2克，最后一档补足。</li>
+      <li>默认买入网格：945 / 942 / 939 / 936 / 933元/克。</li>
+      <li>默认短线止盈参考：买入后上涨约8元/克再考虑卖出。</li>
+      <li>实际成交价、点差、手续费优惠及产品规则以银行实时页面为准。本工具只是计算和纪律辅助，不保证盈利。</li>
+    </ol>
   </div>
-  <ul class="discipline-list">
-    <li>不建议为了 1～3 元/克的波动频繁交易。</li>
-    <li>由于卖出手续费为 0.4%，必须先覆盖手续费成本。</li>
-    <li>核心底仓原则上不要因为短期波动全部卖出，避免踏空。</li>
-    <li>机动仓才用于短线交易，不允许一次性满仓买入。</li>
-    <li>黄金单边上涨时，不要因为短线卖出导致完全踏空。</li>
-    <li>黄金单边下跌时，网格买入不保证一定盈利。</li>
-    <li>本工具仅用于计算和交易纪律辅助，不预测黄金价格，也不保证盈利。</li>
-    <li>实际成交价格、点差、手续费优惠和银行产品规则以银行实时页面为准。</li>
-  </ul>
 </div>
 
 <div class="footer">
   黄金积存金短线计算器 · 离线单文件版<br>
-  数据保存在本地浏览器，刷新不丢失
+  数据保存在本地浏览器
 </div>
 
 <script>
 /* ================================================================
  * 黄金积存金短线计算器 - 核心逻辑
- * 结构：默认参数 → localStorage读写 → 网格计算 → 利润计算 → 状态判断 → 交易记录
  * ================================================================ */
 
-// ---------- 默认参数常量 ----------
+// ---------- 默认参数 ----------
 const DEFAULTS = {
-  currentPrice: 948.00,       // 当前金价
-  heldGrams: 20.4209,         // 已持有克数
-  targetGrams: 30.0000,       // 目标总量
-  costPrice: 930.42,          // 持仓平均成本
-  sellFeeRate: 0.40,          // 卖出手续费 %
-  defaultTradeUnit: 2.0000,   // 默认交易单位 克/次
-  gridStep: 3.00,             // 网格价差 元/克
-  gridStart: 945.00,          // 网格起始价 元/克
-  takeProfitSpread: 8.00,     // 止盈价差 元/克
-  minSuggestedSpread: 6.00    // 建议最小价差 元/克
+  currentPrice: 948.20,
+  heldGrams: 20.4209,
+  targetGrams: 30.0000,
+  costPrice: 930.42,
+  sellFeeRate: 0.40,
+  defaultTradeUnit: 2.0000,
+  gridStep: 3.00,
+  gridStart: 945.00,
+  takeProfitSpread: 8.00,
+  minSuggestedSpread: 6.00
 };
 
-const STORAGE_KEY = 'gold_calculator_params_v1';
-const TRADE_KEY = 'gold_calculator_trades_v1';
+const STORAGE_KEY = 'gold_calc_v2';
+const TRADE_KEY = 'gold_trades_v2';
 
-// ---------- 精度工具函数 ----------
-// 四舍五入到指定小数位，避免浮点数误差
-function round(num, decimals) {
-  const factor = Math.pow(10, decimals);
-  return Math.round((num + Number.EPSILON) * factor) / factor;
-}
-// 金额格式化（2位小数）
-function fmtMoney(num) {
-  return round(num, 2).toFixed(2);
-}
-// 克数格式化（4位小数）
-function fmtGrams(num) {
-  return round(num, 4).toFixed(4);
-}
-// 百分比格式化（2位小数）
-function fmtPercent(num) {
-  return round(num, 2).toFixed(2) + '%';
-}
+// ---------- 精度工具 ----------
+function round(n, d){const f=Math.pow(10,d);return Math.round((n+Number.EPSILON)*f)/f;}
+function fmtMoney(n){return round(n,2).toFixed(2);}
+function fmtGrams(n){return round(n,4).toFixed(4);}
+function fmtPct(n){return round(n,2).toFixed(2)+'%';}
 
-// ---------- localStorage 参数读写 ----------
-function saveParams() {
-  const params = {
-    currentPrice: parseFloat(document.getElementById('currentPrice').value) || DEFAULTS.currentPrice,
-    heldGrams: parseFloat(document.getElementById('heldGrams').value) || DEFAULTS.heldGrams,
-    targetGrams: parseFloat(document.getElementById('targetGrams').value) || DEFAULTS.targetGrams,
-    costPrice: parseFloat(document.getElementById('costPrice').value) || DEFAULTS.costPrice,
-    sellFeeRate: parseFloat(document.getElementById('sellFeeRate').value) || DEFAULTS.sellFeeRate,
-    defaultTradeUnit: parseFloat(document.getElementById('defaultTradeUnit').value) || DEFAULTS.defaultTradeUnit,
-    gridStep: parseFloat(document.getElementById('gridStep').value) || DEFAULTS.gridStep,
-    gridStart: parseFloat(document.getElementById('gridStart').value) || DEFAULTS.gridStart
+// ---------- localStorage ----------
+function saveParams(){
+  const p={
+    currentPrice:parseFloat(document.getElementById('currentPrice').value)||DEFAULTS.currentPrice,
+    heldGrams:parseFloat(document.getElementById('heldGrams').value)||DEFAULTS.heldGrams,
+    targetGrams:parseFloat(document.getElementById('targetGrams').value)||DEFAULTS.targetGrams,
+    costPrice:parseFloat(document.getElementById('costPrice').value)||DEFAULTS.costPrice,
+    sellFeeRate:parseFloat(document.getElementById('sellFeeRate').value)||DEFAULTS.sellFeeRate,
+    defaultTradeUnit:parseFloat(document.getElementById('defaultTradeUnit').value)||DEFAULTS.defaultTradeUnit
   };
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(params)); } catch(e) {}
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(p));}catch(e){}
+}
+function loadParams(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw)return;
+    const p=JSON.parse(raw);
+    document.getElementById('currentPrice').value=fmtMoney(p.currentPrice);
+    document.getElementById('heldGrams').value=fmtGrams(p.heldGrams);
+    document.getElementById('targetGrams').value=fmtGrams(p.targetGrams);
+    document.getElementById('costPrice').value=fmtMoney(p.costPrice);
+    document.getElementById('sellFeeRate').value=fmtMoney(p.sellFeeRate);
+    document.getElementById('defaultTradeUnit').value=fmtGrams(p.defaultTradeUnit);
+  }catch(e){}
 }
 
-function loadParams() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return false;
-    const p = JSON.parse(raw);
-    document.getElementById('currentPrice').value = fmtMoney(p.currentPrice);
-    document.getElementById('heldGrams').value = fmtGrams(p.heldGrams);
-    document.getElementById('targetGrams').value = fmtGrams(p.targetGrams);
-    document.getElementById('costPrice').value = fmtMoney(p.costPrice);
-    document.getElementById('sellFeeRate').value = fmtMoney(p.sellFeeRate);
-    document.getElementById('defaultTradeUnit').value = fmtGrams(p.defaultTradeUnit);
-    document.getElementById('gridStep').value = fmtMoney(p.gridStep);
-    document.getElementById('gridStart').value = fmtMoney(p.gridStart);
-    return true;
-  } catch(e) { return false; }
-}
-
-// ---------- 获取当前参数 ----------
-function getParams() {
-  return {
-    currentPrice: parseFloat(document.getElementById('currentPrice').value) || 0,
-    heldGrams: parseFloat(document.getElementById('heldGrams').value) || 0,
-    targetGrams: parseFloat(document.getElementById('targetGrams').value) || 0,
-    costPrice: parseFloat(document.getElementById('costPrice').value) || 0,
-    sellFeeRate: parseFloat(document.getElementById('sellFeeRate').value) || 0,
-    defaultTradeUnit: parseFloat(document.getElementById('defaultTradeUnit').value) || 2,
-    gridStep: parseFloat(document.getElementById('gridStep').value) || 3,
-    gridStart: parseFloat(document.getElementById('gridStart').value) || 945
+// ---------- 获取参数 ----------
+function getParams(){
+  return{
+    currentPrice:parseFloat(document.getElementById('currentPrice').value)||0,
+    heldGrams:parseFloat(document.getElementById('heldGrams').value)||0,
+    targetGrams:parseFloat(document.getElementById('targetGrams').value)||0,
+    costPrice:parseFloat(document.getElementById('costPrice').value)||0,
+    sellFeeRate:parseFloat(document.getElementById('sellFeeRate').value)||0,
+    defaultTradeUnit:parseFloat(document.getElementById('defaultTradeUnit').value)||2
   };
 }
 
-// ---------- 计算剩余可买 ----------
-function calcRemaining() {
-  const p = getParams();
-  const remaining = round(p.targetGrams - p.heldGrams, 4);
-  document.getElementById('remainingGrams').value = fmtGrams(remaining > 0 ? remaining : 0);
-  return remaining > 0 ? remaining : 0;
+// ---------- 立即计算：生成网格+操作建议 ----------
+function doCalculate(){
+  saveParams();
+  const p=getParams();
+  const remaining=round(p.targetGrams-p.heldGrams,4);
+  const rem=remaining>0?remaining:0;
+
+  // 更新副标题
+  document.getElementById('headerSub').textContent=
+    '已持有 '+fmtGrams(p.heldGrams)+'克 · 目标 '+fmtGrams(p.targetGrams)+'克 · 剩余可买 '+fmtGrams(rem)+'克';
+
+  // 操作建议
+  const box=document.getElementById('suggestionBox');
+  const title=document.getElementById('suggestionTitle');
+  const desc=document.getElementById('suggestionDesc');
+  box.className='suggestion';
+
+  const sellThreshold=round(DEFAULTS.gridStart+DEFAULTS.takeProfitSpread-1,2); // 952
+  const buyThreshold=DEFAULTS.gridStart; // 945
+
+  if(p.currentPrice>sellThreshold){
+    box.classList.add('sell');
+    title.textContent='🔴 止盈观察';
+    desc.textContent='当前价格 '+fmtMoney(p.currentPrice)+' 元/克，已进入短线止盈观察区域，可考虑分批卖出机动仓获利，注意保留核心底仓。';
+  }else if(p.currentPrice<=buyThreshold){
+    box.classList.add('buy');
+    // 计算第几档
+    const slotIdx=Math.floor((buyThreshold-p.currentPrice)/DEFAULTS.gridStep);
+    const slotPrice=round(buyThreshold-slotIdx*DEFAULTS.gridStep,2);
+    const unit=p.defaultTradeUnit;
+    const fullSlots=Math.floor(rem/unit);
+    const lastAmt=round(rem-fullSlots*unit,4);
+    const totalSlots=lastAmt>0?fullSlots+1:fullSlots;
+    const actualIdx=Math.min(slotIdx,totalSlots-1);
+    let buyAmt=(actualIdx===totalSlots-1&&lastAmt>0)?lastAmt:unit;
+    title.textContent='🟢 分批买入';
+    desc.textContent='当前价格 '+fmtMoney(p.currentPrice)+' 元/克，进入第'+(actualIdx+1)+'档买入区域（'+fmtMoney(slotPrice)+'元/克附近），建议买入 '+fmtGrams(buyAmt)+' 克。';
+  }else{
+    box.classList.add('hold');
+    title.textContent='🟡 等待 / 持有';
+    desc.textContent='当前价格 '+fmtMoney(p.currentPrice)+' 元/克，处于等待区，不建议追涨。耐心等待回落至买入网格或上涨至止盈区域。';
+  }
+
+  // 生成网格
+  buildGrid(rem,p.defaultTradeUnit);
 }
 
-// ---------- 动态生成买入网格 ----------
-function buildGrid() {
-  const p = getParams();
-  const remaining = calcRemaining();
-  const unit = p.defaultTradeUnit;
-  const step = p.gridStep;
-  const start = p.gridStart;
+// ---------- 构建网格 ----------
+function buildGrid(remaining,unit){
+  const tbody=document.getElementById('gridBody');
+  tbody.innerHTML='';
 
-  const tbody = document.getElementById('gridBody');
-  tbody.innerHTML = '';
-
-  if (remaining <= 0) {
-    tbody.innerHTML = '<tr><td colspan="6" style="color:#999;padding:16px">已达目标仓位，无可买额度</td></tr>';
+  if(remaining<=0){
+    tbody.innerHTML='<tr><td colspan="4" class="empty">已达目标仓位</td></tr>';
     return;
   }
 
-  // 计算需要多少档
-  const fullSlots = Math.floor(remaining / unit);  // 完整档数
-  const lastAmount = round(remaining - fullSlots * unit, 4); // 最后一档数量
-  const totalSlots = lastAmount > 0 ? fullSlots + 1 : fullSlots;
+  const step=DEFAULTS.gridStep;
+  const start=DEFAULTS.gridStart;
+  const fullSlots=Math.floor(remaining/unit);
+  const lastAmt=round(remaining-fullSlots*unit,4);
+  const totalSlots=lastAmt>0?fullSlots+1:fullSlots;
 
-  let cumulative = 0;
-  const noteNames = ['第一档','第二档','第三档','第四档','第五档','第六档','第七档','第八档','第九档','第十档'];
+  let cumulative=0;
+  const notes=['第一档','第二档','第三档','第四档','第五档','第六档','第七档','第八档'];
 
-  for (let i = 0; i < totalSlots; i++) {
-    const price = round(start - i * step, 2);
-    let amount;
-    let isLast = (i === totalSlots - 1);
+  for(let i=0;i<totalSlots;i++){
+    const price=round(start-i*step,2);
+    const isLast=(i===totalSlots-1);
+    const amount=(isLast&&lastAmt>0)?lastAmt:unit;
+    cumulative=round(cumulative+amount,4);
+    const note=isLast?'最后一档（补足）':(notes[i]||('第'+(i+1)+'档'));
 
-    if (isLast && lastAmount > 0) {
-      amount = lastAmount;
-    } else {
-      amount = unit;
-    }
-
-    cumulative = round(cumulative + amount, 4);
-    const takeProfitPrice = round(price + DEFAULTS.takeProfitSpread, 2);
-    const note = isLast ? '最后一档（补足）' : (noteNames[i] || ('第' + (i+1) + '档'));
-
-    // 高亮当前价格附近的档位
-    const rowClass = (Math.abs(p.currentPrice - price) < 0.5) ? 'row-highlight' : '';
-
-    const tr = document.createElement('tr');
-    tr.className = rowClass;
-    tr.innerHTML =
-      '<td>' + fmtMoney(price) + '</td>' +
-      '<td class="tag-buy">买入</td>' +
-      '<td>' + fmtGrams(amount) + '</td>' +
-      '<td>' + fmtGrams(cumulative) + '</td>' +
-      '<td>' + fmtMoney(takeProfitPrice) + '</td>' +
-      '<td style="color:#888;font-size:0.72rem">' + note + '</td>';
+    const tr=document.createElement('tr');
+    tr.innerHTML=
+      '<td>'+fmtMoney(price)+'</td>'+
+      '<td class="tag-buy">买入</td>'+
+      '<td>'+fmtGrams(amount)+'</td>'+
+      '<td class="note">'+note+'</td>';
     tbody.appendChild(tr);
   }
 }
 
-// ---------- 价格状态判断 ----------
-function judgeStatus() {
-  const p = getParams();
-  const price = p.currentPrice;
-  const box = document.getElementById('suggestionBox');
-  const icon = document.getElementById('statusIcon');
-  const text = document.getElementById('statusText');
-  const desc = document.getElementById('statusDesc');
-
-  // 移除所有状态类
-  box.className = 'suggestion-box';
-
-  // 判断逻辑：价格 > 起始价+止盈价差-1 → 止盈观察；价格 <= 起始价 → 分批买入；中间 → 等待
-  const sellThreshold = round(p.gridStart + DEFAULTS.takeProfitSpread - 1, 2); // 952
-  const buyThreshold = p.gridStart; // 945
-
-  if (price > sellThreshold) {
-    // 🔴 止盈观察
-    box.classList.add('suggestion-sell');
-    icon.textContent = '🔴';
-    text.textContent = '止盈观察';
-    // 找出最接近的止盈档位
-    desc.textContent = '当前价格已进入短线止盈观察区域，可考虑分批卖出机动仓获利了结，注意保留核心底仓。';
-  } else if (price <= buyThreshold) {
-    // 🟢 分批买入
-    box.classList.add('suggestion-buy');
-    icon.textContent = '🟢';
-    text.textContent = '分批买入';
-    // 判断具体哪一档
-    const p2 = getParams();
-    const step = p2.gridStep;
-    const start = p2.gridStart;
-    const slotIndex = Math.floor((start - price) / step);
-    const slotPrice = round(start - slotIndex * step, 2);
-    const remaining = calcRemaining();
-    const unit = p2.defaultTradeUnit;
-    const fullSlots = Math.floor(remaining / unit);
-    const lastAmount = round(remaining - fullSlots * unit, 4);
-    const totalSlots = lastAmount > 0 ? fullSlots + 1 : fullSlots;
-    const actualIndex = Math.min(slotIndex, totalSlots - 1);
-    let buyAmount;
-    if (actualIndex === totalSlots - 1 && lastAmount > 0) {
-      buyAmount = lastAmount;
-    } else {
-      buyAmount = unit;
-    }
-    if (actualIndex >= totalSlots) {
-      desc.textContent = '当前价格低于网格范围，已超出预设买入档位，请手动评估是否加仓。';
-    } else {
-      desc.textContent = '进入第' + (actualIndex + 1) + '档买入区域（' + fmtMoney(slotPrice) + '元/克附近），建议买入' + fmtGrams(buyAmount) + '克。';
-    }
-  } else {
-    // 🟡 等待 / 持有
-    box.classList.add('suggestion-hold');
-    icon.textContent = '🟡';
-    text.textContent = '等待 / 持有';
-    desc.textContent = '当前处于等待区，不建议追涨。耐心等待价格回落至买入网格，或上涨至止盈区域。';
-  }
-}
-
 // ---------- 利润计算 ----------
-function calculateProfit() {
-  const buyPrice = parseFloat(document.getElementById('calcBuyPrice').value) || 0;
-  const sellPrice = parseFloat(document.getElementById('calcSellPrice').value) || 0;
-  const grams = parseFloat(document.getElementById('calcGrams').value) || 0;
-  const feeRate = parseFloat(document.getElementById('calcFeeRate').value) || 0;
+function calcProfit(){
+  const buyPrice=parseFloat(document.getElementById('calcBuyPrice').value)||0;
+  const sellPrice=parseFloat(document.getElementById('calcSellPrice').value)||0;
+  const grams=parseFloat(document.getElementById('calcGrams').value)||0;
+  const feeRate=parseFloat(document.getElementById('sellFeeRate').value)||0;
 
-  if (buyPrice <= 0 || sellPrice <= 0 || grams <= 0) {
+  if(buyPrice<=0||sellPrice<=0||grams<=0){
     alert('请输入有效的买入价、卖出价和交易克数');
     return;
   }
 
-  // 买入金额
-  const buyAmount = round(buyPrice * grams, 2);
-  // 卖出金额（毛收入）
-  const sellAmount = round(sellPrice * grams, 2);
-  // 毛利润
-  const grossProfit = round((sellPrice - buyPrice) * grams, 2);
-  // 卖出手续费
-  const fee = round(sellPrice * grams * (feeRate / 100), 2);
-  // 实际净利润
-  const netProfit = round(grossProfit - fee, 2);
-  // 净收益率 = 净利润 / 买入金额
-  const returnRate = buyAmount > 0 ? round((netProfit / buyAmount) * 100, 2) : 0;
+  const buyAmount=round(buyPrice*grams,2);
+  const sellAmount=round(sellPrice*grams,2);
+  const gross=round((sellPrice-buyPrice)*grams,2);
+  const fee=round(sellPrice*grams*(feeRate/100),2);
+  const net=round(gross-fee,2);
+  const rate=buyAmount>0?round((net/buyAmount)*100,2):0;
 
-  // 显示结果
-  document.getElementById('calcResult').style.display = 'block';
-  document.getElementById('rBuyAmount').textContent = fmtMoney(buyAmount) + ' 元';
-  document.getElementById('rSellAmount').textContent = fmtMoney(sellAmount) + ' 元';
-  document.getElementById('rGrossProfit').textContent = fmtMoney(grossProfit) + ' 元';
-  document.getElementById('rFee').textContent = fmtMoney(fee) + ' 元';
+  document.getElementById('calcResult').classList.add('show');
+  document.getElementById('rBuyAmount').textContent=fmtMoney(buyAmount)+' 元';
+  document.getElementById('rSellAmount').textContent=fmtMoney(sellAmount)+' 元';
+  document.getElementById('rGross').textContent=fmtMoney(gross)+' 元';
+  document.getElementById('rFee').textContent=fmtMoney(fee)+' 元';
 
-  const netEl = document.getElementById('rNetProfit');
-  netEl.textContent = fmtMoney(netProfit) + ' 元';
-  netEl.className = 'result-value ' + (netProfit > 0 ? 'profit' : 'loss');
+  const netEl=document.getElementById('rNet');
+  netEl.textContent=fmtMoney(net)+' 元';
+  netEl.className='value '+(net>0?'profit':'loss');
 
-  const rateEl = document.getElementById('rReturnRate');
-  rateEl.textContent = fmtPercent(returnRate);
-  rateEl.className = 'result-value ' + (returnRate > 0 ? 'profit' : 'loss');
+  const rateEl=document.getElementById('rRate');
+  rateEl.textContent=fmtPct(rate);
+  rateEl.className='value '+(rate>0?'profit':'loss');
 
-  const verdict = document.getElementById('rVerdict');
-  if (netProfit > 0) {
-    verdict.textContent = '✅ 本次交易在当前参数下为正收益。';
-    verdict.className = 'calc-verdict verdict-positive';
-  } else {
-    verdict.textContent = '⚠️ 当前价差不足以覆盖手续费，不建议交易。';
-    verdict.className = 'calc-verdict verdict-negative';
+  const v=document.getElementById('rVerdict');
+  if(net>0){
+    v.textContent='✅ 本次交易为正收益';
+    v.className='verdict ok';
+  }else{
+    v.textContent='⚠️ 价差不足以覆盖手续费，不建议交易';
+    v.className='verdict no';
   }
 
-  // 价差过小警告
-  const spread = round(sellPrice - buyPrice, 2);
-  const warnBox = document.getElementById('calcWarnBox');
-  if (spread < DEFAULTS.minSuggestedSpread) {
-    warnBox.classList.add('show');
-  } else {
-    warnBox.classList.remove('show');
-  }
+  // 价差警告
+  const spread=round(sellPrice-buyPrice,2);
+  document.getElementById('calcWarn').classList.toggle('show',spread<DEFAULTS.minSuggestedSpread);
 
-  // 保存到临时变量供记录使用
-  window._lastCalc = { buyPrice, sellPrice, grams, feeRate, grossProfit, fee, netProfit };
+  window._lastCalc={buyPrice,sellPrice,grams,gross,fee,net};
 }
 
 // ---------- 交易记录 ----------
-function loadTrades() {
-  try {
-    const raw = localStorage.getItem(TRADE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch(e) { return []; }
+function loadTrades(){
+  try{const raw=localStorage.getItem(TRADE_KEY);return raw?JSON.parse(raw):[];}catch(e){return[];}
 }
+function saveTrades(t){try{localStorage.setItem(TRADE_KEY,JSON.stringify(t));}catch(e){}}
 
-function saveTrades(trades) {
-  try { localStorage.setItem(TRADE_KEY, JSON.stringify(trades)); } catch(e) {}
-}
-
-function recordTrade() {
-  if (!window._lastCalc) {
-    alert('请先点击"计算净利润"获取交易数据');
-    return;
-  }
-  const c = window._lastCalc;
-  const trades = loadTrades();
-  const now = new Date();
-  const timeStr = now.getFullYear() + '-' +
-    String(now.getMonth()+1).padStart(2,'0') + '-' +
-    String(now.getDate()).padStart(2,'0') + ' ' +
-    String(now.getHours()).padStart(2,'0') + ':' +
-    String(now.getMinutes()).padStart(2,'0');
-
-  trades.unshift({
-    time: timeStr,
-    buyPrice: c.buyPrice,
-    sellPrice: c.sellPrice,
-    grams: c.grams,
-    grossProfit: c.grossProfit,
-    fee: c.fee,
-    netProfit: c.netProfit
-  });
+function recordTrade(){
+  if(!window._lastCalc){alert('请先点击"计算净利润"');return;}
+  const c=window._lastCalc;
+  const trades=loadTrades();
+  const now=new Date();
+  const ts=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0')+' '+
+    String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+  trades.unshift({time:ts,buyPrice:c.buyPrice,sellPrice:c.sellPrice,grams:c.grams,gross:c.gross,fee:c.fee,net:c.net});
   saveTrades(trades);
   renderTrades();
-  alert('交易已记录');
 }
 
-function renderTrades() {
-  const trades = loadTrades();
-  const list = document.getElementById('tradeList');
-
-  if (trades.length === 0) {
-    list.innerHTML = '<div class="empty-tip">暂无交易记录</div>';
-  } else {
-    list.innerHTML = '';
-    trades.forEach(function(t, idx) {
-      const div = document.createElement('div');
-      div.className = 'trade-item';
-      const profitClass = t.netProfit >= 0 ? 'tag-buy' : 'tag-sell';
-      const profitSign = t.netProfit >= 0 ? '+' : '';
-      div.innerHTML =
-        '<div class="trade-head">' +
-          '<span class="trade-time">' + t.time + '</span>' +
-          '<span class="trade-profit ' + profitClass + '">' + profitSign + fmtMoney(t.netProfit) + ' 元</span>' +
-        '</div>' +
-        '<div class="trade-detail">' +
-          '买入 ' + fmtMoney(t.buyPrice) + ' → 卖出 ' + fmtMoney(t.sellPrice) + ' 元/克 | ' +
-          fmtGrams(t.grams) + ' 克 | 毛利 ' + fmtMoney(t.grossProfit) + ' | 手续费 ' + fmtMoney(t.fee) +
-        '</div>';
+function renderTrades(){
+  const trades=loadTrades();
+  const list=document.getElementById('tradeList');
+  if(trades.length===0){
+    list.innerHTML='<div class="empty">暂无交易记录</div>';
+  }else{
+    list.innerHTML='';
+    trades.forEach(function(t){
+      const div=document.createElement('div');
+      div.className='trade-item';
+      const cls=t.net>=0?'tag-buy':'#ff3b30';
+      const sign=t.net>=0?'+':'';
+      div.innerHTML=
+        '<div class="ti-head"><span class="ti-time">'+t.time+'</span>'+
+        '<span class="ti-profit" style="color:'+(t.net>=0?'#34c759':'#ff3b30')+'">'+sign+fmtMoney(t.net)+' 元</span></div>'+
+        '<div class="ti-detail">买入 '+fmtMoney(t.buyPrice)+' → 卖出 '+fmtMoney(t.sellPrice)+' 元/克 | '+fmtGrams(t.grams)+'克 | 毛利 '+fmtMoney(t.gross)+' | 手续费 '+fmtMoney(t.fee)+'</div>';
       list.appendChild(div);
     });
   }
-
-  // 汇总统计
-  let totalCount = trades.length;
-  let totalGrams = 0, totalFee = 0, totalNetProfit = 0;
-  trades.forEach(function(t) {
-    totalGrams = round(totalGrams + t.grams, 4);
-    totalFee = round(totalFee + t.fee, 2);
-    totalNetProfit = round(totalNetProfit + t.netProfit, 2);
-  });
-
-  document.getElementById('sumCount').textContent = totalCount;
-  document.getElementById('sumGrams').textContent = fmtGrams(totalGrams);
-  document.getElementById('sumFee').textContent = fmtMoney(totalFee);
-  const npEl = document.getElementById('sumNetProfit');
-  npEl.textContent = fmtMoney(totalNetProfit);
-  npEl.className = 'stat-value ' + (totalNetProfit >= 0 ? 'positive' : 'negative');
+  // 汇总
+  let cnt=trades.length,g=0,f=0,n=0;
+  trades.forEach(function(t){g=round(g+t.grams,4);f=round(f+t.fee,2);n=round(n+t.net,2);});
+  document.getElementById('sCount').textContent=cnt;
+  document.getElementById('sGrams').textContent=fmtGrams(g);
+  document.getElementById('sFee').textContent=fmtMoney(f);
+  const ne=document.getElementById('sNet');
+  ne.textContent=fmtMoney(n);
+  ne.className='stat-value '+(n>=0?'pos':'neg');
 }
 
-function clearTrades() {
-  if (confirm('确定要清空所有交易记录吗？此操作不可恢复。')) {
-    saveTrades([]);
-    renderTrades();
-  }
+function clearTrades(){
+  if(confirm('确定清空所有交易记录？')){saveTrades([]);renderTrades();}
 }
 
-// ---------- 更新交易纪律显示 ----------
-function updateDiscipline() {
-  const p = getParams();
-  const remaining = round(p.targetGrams - p.heldGrams, 4);
-  document.getElementById('discUnit').textContent = fmtGrams(p.defaultTradeUnit) + ' 克';
-  document.getElementById('discCore').textContent = fmtGrams(p.heldGrams) + ' 克';
-  document.getElementById('discFlex').textContent = fmtGrams(remaining > 0 ? remaining : 0) + ' 克';
-  document.getElementById('discMinSpread').textContent = fmtMoney(DEFAULTS.minSuggestedSpread) + ' 元/克';
-}
-
-// ---------- 恢复默认参数 ----------
-function resetDefaults() {
-  if (!confirm('确定恢复所有默认参数吗？')) return;
-  document.getElementById('currentPrice').value = fmtMoney(DEFAULTS.currentPrice);
-  document.getElementById('heldGrams').value = fmtGrams(DEFAULTS.heldGrams);
-  document.getElementById('targetGrams').value = fmtGrams(DEFAULTS.targetGrams);
-  document.getElementById('costPrice').value = fmtMoney(DEFAULTS.costPrice);
-  document.getElementById('sellFeeRate').value = fmtMoney(DEFAULTS.sellFeeRate);
-  document.getElementById('defaultTradeUnit').value = fmtGrams(DEFAULTS.defaultTradeUnit);
-  document.getElementById('gridStep').value = fmtMoney(DEFAULTS.gridStep);
-  document.getElementById('gridStart').value = fmtMoney(DEFAULTS.gridStart);
-  // 同步利润试算区的手续费
-  document.getElementById('calcFeeRate').value = fmtMoney(DEFAULTS.sellFeeRate);
-  saveParams();
-  refreshAll();
-}
-
-// ---------- 全局刷新 ----------
-function refreshAll() {
-  calcRemaining();
-  buildGrid();
-  judgeStatus();
-  updateDiscipline();
-}
-
-// ---------- 事件绑定 ----------
-function bindEvents() {
-  // 所有账户参数输入框变化时触发刷新和保存
-  const paramInputs = ['currentPrice','heldGrams','targetGrams','costPrice','sellFeeRate','defaultTradeUnit','gridStep','gridStart'];
-  paramInputs.forEach(function(id) {
-    document.getElementById(id).addEventListener('input', function() {
-      saveParams();
-      refreshAll();
-      // 同步手续费到利润试算区
-      if (id === 'sellFeeRate') {
-        document.getElementById('calcFeeRate').value = this.value;
-      }
-    });
+// ---------- 输入自动保存 ----------
+function bindAutoSave(){
+  ['currentPrice','sellFeeRate','heldGrams','targetGrams','costPrice','defaultTradeUnit'].forEach(function(id){
+    document.getElementById(id).addEventListener('change',saveParams);
   });
 }
 
 // ---------- 初始化 ----------
-function init() {
+function init(){
   loadParams();
-  // 同步手续费到利润试算区
-  const p = getParams();
-  document.getElementById('calcFeeRate').value = fmtMoney(p.sellFeeRate);
-  bindEvents();
-  refreshAll();
+  bindAutoSave();
   renderTrades();
+  // 自动执行一次计算
+  doCalculate();
 }
 
-// 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded',init);
 </script>
 </body>
 </html>
